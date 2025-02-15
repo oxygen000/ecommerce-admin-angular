@@ -1,0 +1,27 @@
+<div class="container">
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <div class="header">
+            <h1 class="title">Dashboard</h1>
+            <button class="settings-btn">Settings</button>
+        </div>
+
+        <!-- بطاقات الإحصائيات -->
+        <div class="stats-grid">
+            <div *ngFor="let stat of stats" class="stat-card">
+                <div class="icon">{{ stat.icon }}</div>
+                <div class="stat-info">
+                    <h2 class="stat-title">{{ stat.title }}</h2>
+                    <p class="stat-value">{{ stat.value }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- مخطط المبيعات -->
+        <div class="chart-container">
+            <h2 class="chart-title">Sales Overview</h2>
+            
+        </div>
+    </main>
+</div>

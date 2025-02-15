@@ -1,0 +1,29 @@
+<nav class="sidebar" [class.closed]="isClosed">
+    <button class="toggle-btn" (click)="toggleSidebar()">
+        <i class="fas" [class.fa-bars]="isClosed" [class.fa-times]="!isClosed"></i>
+    </button>
+
+    <ul class="menu">
+        <li><a routerLink="/Dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fas fa-home"></i> <span *ngIf="!isClosed">Dashboard</span>
+        </a></li>
+        <li><a routerLink="/Users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fas fa-users"></i> <span *ngIf="!isClosed">Users</span>
+        </a></li>
+        <li><a routerLink="/Reports" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fas fa-chart-line"></i> <span *ngIf="!isClosed">Reports</span>
+        </a></li>
+        <li><a routerLink="/Orders" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fas fa-box"></i> <span *ngIf="!isClosed">Orders</span>
+        </a></li>
+        <li><a routerLink="/Products" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fas fa-tshirt"></i> <span *ngIf="!isClosed">Products</span>
+        </a></li>
+        <li><a routerLink="/Settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fas fa-cogs"></i> <span *ngIf="!isClosed">Settings</span>
+        </a></li>
+        <li><a routerLink="/Logout" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fas fa-sign-out-alt"></i> <span *ngIf="!isClosed">Logout</span>
+        </a></li>
+    </ul>
+</nav>

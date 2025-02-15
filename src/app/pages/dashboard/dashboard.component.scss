@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+}
+
+
+
+// ✅ تنسيق المحتوى الرئيسي (main content)
+.main-content {
+    flex: 1;
+    padding: 60px;
+    transition: margin-left 0.3s ease-in-out;
+    margin-left: 250px; // محاذاة بجانب الـ Sidebar
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .settings-btn {
+        background: #0f3460;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+            background: #1b4e89;
+        }
+    }
+}
+
+// ✅ تنسيق بطاقات الإحصائيات
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+
+    .stat-card {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .stat-info {
+            .stat-title {
+                font-size: 14px;
+                color: #888;
+            }
+
+            .stat-value {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// ✅ تنسيق مخطط المبيعات
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+
+
+    .chart-title {
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+// ✅ تحسين استجابة الصفحة
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 80px; // تصغير المساحة عند غلق الـ Sidebar
+    }
+}

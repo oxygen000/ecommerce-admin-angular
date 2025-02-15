@@ -1,0 +1,23 @@
+<h2>إضافة مستخدم جديد</h2>
+
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>الاسم</mat-label>
+    <input matInput [(ngModel)]="user.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>البريد الإلكتروني</mat-label>
+    <input matInput [(ngModel)]="user.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>الدور</mat-label>
+    <mat-select [(ngModel)]="user.role">
+      <mat-option value="user">مستخدم</mat-option>
+      <mat-option value="admin">مشرف</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="save()">حفظ</button>
+</form>
