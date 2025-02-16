@@ -1,13 +1,37 @@
 <div class="container">
-
-    <!-- المحتوى الرئيسي -->
+    <!-- Main Content -->
     <main class="main-content">
         <div class="header">
             <h1 class="title">Dashboard</h1>
-            <button class="settings-btn">Settings</button>
+            <button class="settings-btn" (click)="toggleSettings()">Settings</button>
         </div>
 
-        <!-- بطاقات الإحصائيات -->
+        <!-- Settings Modal -->
+        <div class="settings-modal" *ngIf="isSettingsOpen" [class.open]="isSettingsOpen">
+            <div class="settings-content">
+                <h2>Settings</h2>
+
+                <!-- Language Selection -->
+                <div class="setting-option">
+                    <label>Language</label>
+                    <select class="language-select" [(ngModel)]="selectedLanguage" (change)="changeLanguage(selectedLanguage)">
+                        <option value="English">English</option>
+                        <option value="Arabic">Arabic</option>
+                    </select>
+                </div>
+
+                <!-- Account Settings -->
+                <div class="setting-option">
+                    <label>Account</label>
+                    <button class="account-btn">Manage Account</button>
+                </div>
+
+                <!-- Close Button -->
+                <button class="close-btn" (click)="toggleSettings()">Close</button>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
         <div class="stats-grid">
             <div *ngFor="let stat of stats" class="stat-card">
                 <div class="icon">{{ stat.icon }}</div>
@@ -18,10 +42,46 @@
             </div>
         </div>
 
-        <!-- مخطط المبيعات -->
+        <!-- Sales Chart -->
         <div class="chart-container">
-            <h2 class="chart-title">Sales Overview</h2>
-            
+            <ngx-charts-bar-vertical
+                [results]="chartData"
+                [scheme]="colorScheme"
+                [gradient]="true"
+                [xAxis]="true"
+                [yAxis]="true"
+                [legend]="true"
+                [showXAxisLabel]="true"
+                [showYAxisLabel]="true"
+                [xAxisLabel]="'Category'"
+                [yAxisLabel]="'Value'">
+            </ngx-charts-bar-vertical>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-container">
+            <h2 class="section-title">Data Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Icon</th>
+                        <th>Title</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stat of stats">
+                        <td>{{ stat.icon }}</td>
+                        <td>{{ stat.title }}</td>
+                        <td>{{ stat.value }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Export Data Button -->
+        <div class="export-section">
+            <button class="export-btn" (click)="downloadExcel()">Download Excel</button>
         </div>
     </main>
 </div>

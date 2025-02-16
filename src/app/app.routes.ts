@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { provideRouter } from '@angular/router';
-import { HeaderComponent } from './core/header/header.component';
-import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
@@ -18,8 +16,7 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', component: HeaderComponent },
-      { path: '', component: SidebarComponent },
+      { path: '', redirectTo: 'Dashboard', pathMatch: 'full' }, // ✅ توجيه الصفحة الرئيسية إلى Dashboard
       { path: 'Dashboard', component: DashboardComponent },
       { path: 'Products', component: ProductsComponent },
       { path: 'Orders', component: OrdersComponent },
@@ -28,9 +25,9 @@ export const routes: Routes = [
       { path: 'Settings', component: SettingsComponent }
     ]
   }
-  
 ];
+
 export const appConfig = [
   provideRouter(routes),
-  importProvidersFrom(BrowserAnimationsModule, MatDialogModule) // استيراد `MatDialogModule`
+  importProvidersFrom(BrowserAnimationsModule, MatDialogModule)
 ];
