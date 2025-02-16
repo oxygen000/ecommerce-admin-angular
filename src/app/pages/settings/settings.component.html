@@ -1,25 +1,76 @@
-<div class="main-container">
-    <div class="settings-container">
-      <h2>Settings</h2>
-      <div class="setting-item">
-        <label>Enable Notifications:</label>
-        <input type="checkbox" [(ngModel)]="settings.notifications">
-      </div>
-      
-      <div class="setting-item">
-        <label>Language:</label>
-        <select [(ngModel)]="settings.language">
-          <option>English</option>
-          <option>Arabic</option>
-        </select>
-      </div>
-  
-      <div class="setting-item">
-        <label>Dark Mode:</label>
-        <input type="checkbox" [(ngModel)]="settings.darkMode">
-      </div>
-  
-      <button (click)="toggleSetting('darkMode')">Toggle Dark Mode</button>
+<div class="admin-settings-container">
+  <h2>Admin Dashboard - Main Settings</h2>
+
+  <div class="settings-section">
+    <h3>General Settings</h3>
+    <div class="setting-item">
+      <label>Enable Notifications:</label>
+      <input type="checkbox" [(ngModel)]="settings.notifications">
     </div>
+
+    <div class="setting-item">
+      <label>Language:</label>
+      <select [(ngModel)]="settings.language">
+        <option>English</option>
+        <option>Arabic</option>
+      </select>
+    </div>
+
+    <div class="setting-item">
+      <label>Time Zone:</label>
+      <select [(ngModel)]="settings.timeZone">
+        <option>GMT</option>
+        <option>UTC</option>
+        <option>AST</option>
+        <option>PST</option>
+      </select>
+    </div>
+
+    <div class="setting-item">
+      <label>Auto-Update:</label>
+      <input type="checkbox" [(ngModel)]="settings.autoUpdate">
+    </div>
+
+    <div class="setting-item">
+      <label>Session Timeout (minutes):</label>
+      <input type="number" [(ngModel)]="settings.sessionTimeout" min="1" max="120">
+    </div>
+
+    <button class="save-btn">Save Settings</button>
   </div>
-  
+
+  <div class="settings-section">
+    <h3>Security Settings</h3>
+    <div class="setting-item">
+      <label>Enable Two-Factor Authentication:</label>
+      <input type="checkbox" [(ngModel)]="settings.twoFactorAuth">
+    </div>
+
+    <div class="setting-item">
+      <label>Receive Security Alerts:</label>
+      <input type="checkbox" [(ngModel)]="settings.securityAlerts">
+    </div>
+
+    <div class="setting-item">
+      <label>Change Password:</label>
+      <input type="password" placeholder="Enter new password">
+    </div>
+
+    <button class="security-btn">Update Security Settings</button>
+  </div>
+
+  <div class="settings-section">
+    <h3>Account Settings</h3>
+    <div class="setting-item">
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="settings.username">
+    </div>
+
+    <div class="setting-item">
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="settings.email">
+    </div>
+
+    <button class="save-btn">Save Changes</button>
+  </div>
+</div>

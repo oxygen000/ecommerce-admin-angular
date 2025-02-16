@@ -55,19 +55,5 @@
         <p *ngIf="filteredUsers.length === 0" class="no-users">No users found.</p>
     </div>
 
-    <!-- نافذة منبثقة لإضافة مستخدم جديد -->
-    <div class="modal" *ngIf="showAddUserModal">
-        <div class="modal-content">
-            <h3>Add New User</h3>
-            <form (submit)="addUser()">
-                <input type="text" placeholder="Name" [(ngModel)]="newUser.name" name="name" required>
-                <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
-                <input type="text" placeholder="Phone" [(ngModel)]="newUser.phone" name="phone" required>
-                <div class="modal-buttons">
-                    <button type="submit" class="save-btn">✅ Save</button>
-                    <button type="button" class="cancel-btn" (click)="closeAddUserModal()">❌ Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
+   
 </div>

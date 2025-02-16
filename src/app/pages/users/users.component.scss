@@ -5,6 +5,7 @@
   min-height: 100vh;
   background: linear-gradient(to right, #eef2f3, #dfe9f3);
   padding: 20px;
+  
 }
 
 .users-container {
@@ -17,6 +18,8 @@
   text-align: center;
   transition: all 0.3s ease-in-out;
   margin-left: 90px;
+  position: relative;
+  left: 40px; // إزاحة المحتوى بعد الـ sidebar
 
 }
 

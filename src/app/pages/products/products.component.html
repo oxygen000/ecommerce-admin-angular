@@ -1,26 +1,52 @@
 <div class="main-container">
-    <div class="products-container">
-      <h2>Products List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price ($)</th>
-            <th>Category</th>
-            <th>Stock</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of products">
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.stock }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="form-container">
+    <h2>Add Product</h2>
+    <form (ngSubmit)="addProduct()">
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="newProduct.name" name="name" required />
+
+      <label>Price ($):</label>
+      <input type="number" [(ngModel)]="newProduct.price" name="price" required />
+
+      <label>Category:</label>
+      <select [(ngModel)]="newProduct.category" name="category" required>
+        <option value="Men">Men</option>
+        <option value="Women">Women</option>
+        <option value="Kids">Kids</option>
+      </select>
+
+      <label>Stock:</label>
+      <input type="number" [(ngModel)]="newProduct.stock" name="stock" required />
+
+      <button type="submit">Add Product</button>
+    </form>
   </div>
-  
+
+  <div class="products-container">
+    <h2>Products List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price ($)</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.stock }}</td>
+          <td>
+            <button class="delete-btn" (click)="deleteProduct(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -14,7 +14,5 @@ export class HeaderComponent {
   @Input() isSidebarClosed: boolean = false;
 
   user = {
-    name: 'Ahmed Hassan',
-    avatar: 'assets/user.jpg'
-  };
+    name: 'Ahmed Hassan',};
 }

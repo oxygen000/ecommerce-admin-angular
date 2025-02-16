@@ -1,26 +1,54 @@
-<div class="main-container">
-    <div class="orders-container">
-      <h2>Orders List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Customer</th>
-            <th>Date</th>
-            <th>Total ($)</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of orders">
-            <td>{{ order.id }}</td>
-            <td>{{ order.customer }}</td>
-            <td>{{ order.date }}</td>
-            <td>{{ order.total }}</td>
-            <td>{{ order.status }}</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="orders-container">
+  <!-- عنوان الصفحة -->
+  <h2 class="title">Orders Management</h2>
+
+  <!-- مربع البحث عن الطلبات -->
+  <input type="text" placeholder="Search orders..." [(ngModel)]="searchTerm" class="search-input" />
+
+  <!-- قائمة الطلبات -->
+  <div class="orders-list">
+    <div *ngFor="let order of filteredOrders()" class="order-card" (click)="selectOrder(order)">
+      <div class="order-header">
+        <h3>Order #{{ order.id }}</h3>
+        <span class="status" [ngClass]="getStatusClass(order.status)">
+          {{ order.status }}
+        </span>
+      </div>
+      <p><strong>Customer:</strong> {{ order.customer }}</p>
+      <p><strong>Date:</strong> {{ order.date }}</p>
     </div>
   </div>
-  
+
+  <!-- نافذة التفاصيل عند الضغط على الطلب -->
+  <div *ngIf="selectedOrder" class="modal">
+    <div class="modal-content">
+      <h2>Order Details</h2>
+      
+      <label><strong>ID:</strong></label>
+      <p>{{ selectedOrder.id }}</p>
+
+      <label><strong>Customer:</strong></label>
+      <input type="text" [(ngModel)]="selectedOrder.customer" class="input-field"/>
+
+      <label><strong>Date:</strong></label>
+      <input type="date" [(ngModel)]="selectedOrder.date" class="input-field"/>
+
+      <label><strong>Status:</strong></label>
+      <select [(ngModel)]="selectedOrder.status" class="status-dropdown">
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+
+      <label><strong>Items:</strong></label>
+      <ul>
+        <li *ngFor="let item of selectedOrder.items; let i = index">
+          <input type="text" [(ngModel)]="selectedOrder.items[i]" class="input-field"/>
+        </li>
+      </ul>
+
+      <div class="modal-actions">
+        <button class="update-btn" (click)="updateOrder()">Save Changes</button>
+        <button class="close-btn" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

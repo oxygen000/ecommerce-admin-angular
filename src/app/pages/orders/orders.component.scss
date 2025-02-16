@@ -1,60 +1,254 @@
-.main-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Avoid collision with the header */
-    min-height: calc(100vh - 100px); /* Adjust height after subtracting the header */
-    padding-top: 90px; /* Add space between the header and content */
-}
+// الألوان الأساسية
+$primary-color: #4a90e2;
+$secondary-color: #f5f7fa;
+$accent-color: #27ae60;
+$danger-color: #e74c3c;
+$warning-color: #f39c12;
+$text-color: #333;
+$light-gray: #dcdcdc;
+$border-radius: 10px;
 
+// تنسيق الحاوية الرئيسية للطلبات
 .orders-container {
-    max-width: 70%; /* Reduce width to prevent sidebar overlap */
-    background: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for better visibility */
-    margin-left: auto; /* Center the container */
-    margin-right: auto;
-}
+  max-width: 900px;
+  margin: 90px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: $border-radius;
+  position: relative;
+  left: 100px; // إزاحة المحتوى بعد الـ sidebar
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-h2 {
+  .title {
     text-align: center;
-    color: #007bff;
+    color: $text-color;
     font-size: 24px;
     font-weight: bold;
-}
+    margin-bottom: 20px;
+  }
 
-/* Styling the table for better readability */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-/* Table header styling */
-th, td {
-    border: 1px solid #ddd;
-    padding: 14px;
-    text-align: center;
+  .search-input {
+    width: 98%;
+    padding: 12px;
     font-size: 16px;
+    border: 1px solid $light-gray;
+    border-radius: $border-radius;
+    margin-bottom: 20px;
+    outline: none;
+    transition: 0.3s;
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 8px rgba($primary-color, 0.3);
+    }
+  }
+
+  // قائمة الطلبات
+  .orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .order-card {
+      background: $secondary-color;
+      padding: 15px;
+      border-radius: $border-radius;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+          margin: 0;
+          font-size: 18px;
+          color: $text-color;
+        }
+      }
+
+      p {
+        margin: 5px 0;
+        color: darken($text-color, 10%);
+      }
+
+      .status {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: capitalize;
+
+        &.pending {
+          background: lighten($danger-color, 20%);
+          color: $danger-color;
+        }
+
+        &.completed {
+          background: lighten($accent-color, 20%);
+          color: $accent-color;
+        }
+
+        &.processing {
+          background: lighten($primary-color, 20%);
+          color: $primary-color;
+        }
+
+        &.shipped {
+          background: lighten($warning-color, 20%);
+          color: $warning-color;
+        }
+      }
+    }
+  }
 }
 
-th {
-    background-color: #007bff;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 450px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+  
+      h2 {
+        color: $primary-color;
+        margin-bottom: 15px;
+      }
+  
+      label {
+        font-weight: bold;
+        display: block;
+        text-align: left;
+        margin: 10px 0 5px;
+      }
+  
+      p {
+        font-size: 16px;
+        color: $text-color;
+        margin-bottom: 10px;
+        background: #f8f9fa;
+        padding: 8px;
+        border-radius: 5px;
+      }
+  
+      // تنسيق حقول الإدخال
+     
+  
+      
+  
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0;
+  
+        li {
+          background: $secondary-color;
+          padding: 8px;
+          margin: 5px 0;
+          border-radius: 5px;
+        }
+      }
+  
+      // أزرار التحكم في الطلب
+      .modal-actions {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+  
+        button {
+          padding: 10px 15px;
+          border: none;
+          color: #fff;
+          font-weight: bold;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background 0.3s ease-in-out;
+          width: 48%;
+        }
+  
+        .update-btn {
+          background: $primary-color;
+  
+          &:hover {
+            background: darken($primary-color, 10%);
+          }
+        }
+  
+        .close-btn {
+          background: $danger-color;
+  
+          &:hover {
+            background: darken($danger-color, 10%);
+          }
+        }
+      }
+    }
+  }
+  
+  // تنسيق القائمة المنسدلة
+  .status-dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
 
-/* Alternating row colors for better readability */
-tr:nth-child(even) {
-    background-color: #f8f9fa;
-}
+    &:focus {
+      border-color: $accent-color;
+      box-shadow: 0 0 5px rgba($accent-color, 0.5);
+    }
+  }
 
-/* Hover effect for interactive feel */
-tr:hover {
-    background-color: #e9ecef;
-    transition: background 0.3s ease-in-out;
-}
+
+  .input-field {
+    width: 90%;
+    padding: 12px; // زيادة المساحة الداخلية
+    border: 2px solid #ddd; // لون حدود ناعم
+    border-radius: 8px; // زوايا أكثر انحناءً
+    font-size: 16px;
+    outline: none;
+    background: #f9f9f9; // خلفية خفيفة
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    &:focus {
+      border-color: $primary-color;
+      background: #fff;
+      box-shadow: 0 0 8px rgba($primary-color, 0.5);
+    }
+  
+    &::placeholder {
+      color: #aaa;
+      font-style: italic;
+      transition: color 0.3s ease-in-out;
+    }
+  
+    &:focus::placeholder {
+      color: #ccc;
+    }
+  }
+  

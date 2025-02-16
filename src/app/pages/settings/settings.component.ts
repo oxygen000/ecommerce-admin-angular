@@ -12,10 +12,25 @@ export class SettingsComponent {
   settings = {
     notifications: true,
     language: 'English',
-    darkMode: false
+    timeZone: 'GMT',
+    autoUpdate: false,
+    sessionTimeout: 15,
+    twoFactorAuth: false,
+    securityAlerts: false,
+    username: 'Admin',
+    email: 'admin@example.com'
   };
 
-  toggleSetting(setting: 'notifications' | 'darkMode') {
-    this.settings[setting] = !this.settings[setting];
+  saveSettings(): void {
+    console.log('Settings saved:', this.settings);
+    alert('Settings have been updated successfully!');
+  }
+
+  updateSecuritySettings(): void {
+    console.log('Security settings updated:', {
+      twoFactorAuth: this.settings.twoFactorAuth,
+      securityAlerts: this.settings.securityAlerts
+    });
+    alert('Security settings updated successfully!');
   }
 }
