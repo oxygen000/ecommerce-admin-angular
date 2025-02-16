@@ -1,23 +1,73 @@
 <div class="main-container">
     <div class="users-container">
-      <h2>Users List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
-          </tr>
-        </tbody>
-      </table>
+        <h2>Users List</h2>
+
+        <!-- أزرار البحث والإضافة -->
+        <div class="top-controls">
+            <input type="text" placeholder="Search users..." [(ngModel)]="searchQuery" (input)="filterUsers()" class="search-box">
+            <button class="refresh-btn" (click)="fetchUsers()">Refresh Data</button>
+            <button class="add-btn" (click)="openAddUserModal()">Add User</button>
+        </div>
+        
+       <!-- نافذة إضافة مستخدم جديد -->
+<div class="modal" *ngIf="showAddUserModal">
+    <div class="modal-content">
+        <h3>Add New User</h3>
+        <form (submit)="addUser($event)"> <!-- إضافة event لمنع إعادة تحميل الصفحة -->
+            <input type="text" placeholder="Name" [(ngModel)]="newUser.name" name="name" required>
+            <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
+            <input type="text" placeholder="Phone" [(ngModel)]="newUser.phone" name="phone" required>
+            <div class="modal-buttons">
+                <button type="submit" class="save-btn">✅ Save</button>
+                <button type="button" class="cancel-btn" (click)="closeAddUserModal()">❌ Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+        
+
+        <!-- جدول المستخدمين -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of filteredUsers">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>
+                        <button class="delete-btn" (click)="deleteUser(user.id)">🗑 Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- رسالة عند عدم وجود مستخدمين -->
+        <p *ngIf="filteredUsers.length === 0" class="no-users">No users found.</p>
+    </div>
+
+    <!-- نافذة منبثقة لإضافة مستخدم جديد -->
+    <div class="modal" *ngIf="showAddUserModal">
+        <div class="modal-content">
+            <h3>Add New User</h3>
+            <form (submit)="addUser()">
+                <input type="text" placeholder="Name" [(ngModel)]="newUser.name" name="name" required>
+                <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
+                <input type="text" placeholder="Phone" [(ngModel)]="newUser.phone" name="phone" required>
+                <div class="modal-buttons">
+                    <button type="submit" class="save-btn">✅ Save</button>
+                    <button type="button" class="cancel-btn" (click)="closeAddUserModal()">❌ Cancel</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,20 +1,77 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
   users: any[] = [];
+  filteredUsers: any[] = [];
+  searchQuery: string = '';
+  showAddUserModal: boolean = false;
 
-  constructor(private usersService: UsersService) {}
+  newUser = { id: 0, name: '', email: '', phone: '' };
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.users = this.usersService.getUsers(); // جلب البيانات من الخدمة
+    this.fetchUsers();
+  }
+
+  fetchUsers(): void {
+    this.users = [
+      { id: 1, name: 'Ali Ahmed', email: 'ali@example.com', phone: '123456789' },
+      { id: 2, name: 'Sara Mohamed', email: 'sara@example.com', phone: '987654321' },
+      { id: 3, name: 'Omar Khaled', email: 'omar@example.com', phone: '555667788' },
+    ];
+    this.filteredUsers = [...this.users];
+  }
+
+  addUser(event?: Event): void {
+    if (event) {
+      event.preventDefault(); // منع إعادة تحميل الصفحة
+    }
+
+    if (this.newUser.name.trim() && this.newUser.email.trim() && this.newUser.phone.trim()) {
+      this.newUser.id = this.users.length ? Math.max(...this.users.map(user => user.id)) + 1 : 1;
+      this.users.push({ ...this.newUser });
+      this.filteredUsers = [...this.users]; // تحديث القائمة
+
+      // تصفير النموذج
+      this.newUser = { id: 0, name: '', email: '', phone: '' };
+      this.closeAddUserModal();
+    }
+  }
+
+  filterUsers(): void {
+    this.filteredUsers = this.users.filter(user =>
+      user.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+      user.email.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+      user.phone.includes(this.searchQuery)
+    );
+  }
+
+  deleteUser(userId: number): void {
+    this.users = this.users.filter(user => user.id !== userId);
+    this.filteredUsers = [...this.users];
+  }
+
+  openAddUserModal() {
+    this.showAddUserModal = true;
+    setTimeout(() => {
+      document.querySelector('.modal')?.classList.add('active');
+    }, 10); // مهلة قصيرة لتفعيل التحويل السلس
+  }
+  
+  closeAddUserModal() {
+    document.querySelector('.modal')?.classList.remove('active');
+    setTimeout(() => {
+      this.showAddUserModal = false;
+    }, 300); // ينتظر التحويل قبل الإخفاء
   }
 }
