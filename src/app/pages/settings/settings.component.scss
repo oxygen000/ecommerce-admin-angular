@@ -1,0 +1,80 @@
+/* تحسين تجربة المستخدم */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 100px);
+    padding-top: 90px;
+    background-color: #f8f9fa; /* خلفية خفيفة لتحسين التباين */
+}
+
+/* تحسين صندوق الإعدادات */
+.settings-container {
+    max-width: 50%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* تأثير hover لرفع الصندوق */
+.settings-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* تنسيق العنوان */
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* تحسين عناصر الإعدادات */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    background: #f4f4f4;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+/* تأثير hover على عناصر الإعدادات */
+.setting-item:hover {
+    background: #e9ecef;
+}
+
+/* تحسين الأزرار */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* تأثير hover للأزرار */
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.02);
+}
+
+/* تأثير عند النقر */
+button:active {
+    transform: scale(0.98);
+}

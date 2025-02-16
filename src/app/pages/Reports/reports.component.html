@@ -1,1 +1,23 @@
-<p>reports works!</p>
+<div class="main-container">
+    <div class="reports-container">
+        <h2>Reports List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of reports">
+                    <td>{{ report.id }}</td>
+                    <td>{{ report.title }}</td>
+                    <td>{{ report.date }}</td>
+                    <td>{{ report.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

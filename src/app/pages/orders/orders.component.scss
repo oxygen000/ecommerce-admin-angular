@@ -1,0 +1,60 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Avoid collision with the header */
+    min-height: calc(100vh - 100px); /* Adjust height after subtracting the header */
+    padding-top: 90px; /* Add space between the header and content */
+}
+
+.orders-container {
+    max-width: 70%; /* Reduce width to prevent sidebar overlap */
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for better visibility */
+    margin-left: auto; /* Center the container */
+    margin-right: auto;
+}
+
+h2 {
+    text-align: center;
+    color: #007bff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Styling the table for better readability */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table header styling */
+th, td {
+    border: 1px solid #ddd;
+    padding: 14px;
+    text-align: center;
+    font-size: 16px;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Alternating row colors for better readability */
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Hover effect for interactive feel */
+tr:hover {
+    background-color: #e9ecef;
+    transition: background 0.3s ease-in-out;
+}

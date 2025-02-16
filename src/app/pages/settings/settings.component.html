@@ -1,1 +1,25 @@
-<p>settings works!</p>
+<div class="main-container">
+    <div class="settings-container">
+      <h2>Settings</h2>
+      <div class="setting-item">
+        <label>Enable Notifications:</label>
+        <input type="checkbox" [(ngModel)]="settings.notifications">
+      </div>
+      
+      <div class="setting-item">
+        <label>Language:</label>
+        <select [(ngModel)]="settings.language">
+          <option>English</option>
+          <option>Arabic</option>
+        </select>
+      </div>
+  
+      <div class="setting-item">
+        <label>Dark Mode:</label>
+        <input type="checkbox" [(ngModel)]="settings.darkMode">
+      </div>
+  
+      <button (click)="toggleSetting('darkMode')">Toggle Dark Mode</button>
+    </div>
+  </div>
+  
