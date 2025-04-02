@@ -16,7 +16,7 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', redirectTo: 'Dashboard', pathMatch: 'full' }, // ✅ توجيه الصفحة الرئيسية إلى Dashboard
+      { path: '', redirectTo: 'Dashboard', pathMatch: 'full' }, 
       { path: 'Dashboard', component: DashboardComponent },
       { path: 'Products', component: ProductsComponent },
       { path: 'Orders', component: OrdersComponent },

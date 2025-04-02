@@ -34,15 +34,14 @@ export class UsersComponent implements OnInit {
 
   addUser(event?: Event): void {
     if (event) {
-      event.preventDefault(); // منع إعادة تحميل الصفحة
+      event.preventDefault(); 
     }
 
     if (this.newUser.name.trim() && this.newUser.email.trim() && this.newUser.phone.trim()) {
       this.newUser.id = this.users.length ? Math.max(...this.users.map(user => user.id)) + 1 : 1;
       this.users.push({ ...this.newUser });
-      this.filteredUsers = [...this.users]; // تحديث القائمة
+      this.filteredUsers = [...this.users]; 
 
-      // تصفير النموذج
       this.newUser = { id: 0, name: '', email: '', phone: '' };
       this.closeAddUserModal();
     }
@@ -65,13 +64,13 @@ export class UsersComponent implements OnInit {
     this.showAddUserModal = true;
     setTimeout(() => {
       document.querySelector('.modal')?.classList.add('active');
-    }, 10); // مهلة قصيرة لتفعيل التحويل السلس
+    }, 10); 
   }
   
   closeAddUserModal() {
     document.querySelector('.modal')?.classList.remove('active');
     setTimeout(() => {
       this.showAddUserModal = false;
-    }, 300); // ينتظر التحويل قبل الإخفاء
+    }, 300); 
   }
 }

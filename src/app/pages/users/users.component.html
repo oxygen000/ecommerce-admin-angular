@@ -2,18 +2,16 @@
     <div class="users-container">
         <h2>Users List</h2>
 
-        <!-- أزرار البحث والإضافة -->
         <div class="top-controls">
             <input type="text" placeholder="Search users..." [(ngModel)]="searchQuery" (input)="filterUsers()" class="search-box">
             <button class="refresh-btn" (click)="fetchUsers()">Refresh Data</button>
             <button class="add-btn" (click)="openAddUserModal()">Add User</button>
         </div>
         
-       <!-- نافذة إضافة مستخدم جديد -->
 <div class="modal" *ngIf="showAddUserModal">
     <div class="modal-content">
         <h3>Add New User</h3>
-        <form (submit)="addUser($event)"> <!-- إضافة event لمنع إعادة تحميل الصفحة -->
+        <form (submit)="addUser($event)"> 
             <input type="text" placeholder="Name" [(ngModel)]="newUser.name" name="name" required>
             <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
             <input type="text" placeholder="Phone" [(ngModel)]="newUser.phone" name="phone" required>
@@ -27,7 +25,6 @@
 
         
 
-        <!-- جدول المستخدمين -->
         <table>
             <thead>
                 <tr>
@@ -51,7 +48,6 @@
             </tbody>
         </table>
 
-        <!-- رسالة عند عدم وجود مستخدمين -->
         <p *ngIf="filteredUsers.length === 0" class="no-users">No users found.</p>
     </div>
 

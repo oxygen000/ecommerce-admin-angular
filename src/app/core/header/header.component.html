@@ -1,18 +1,15 @@
 <header class="header" [class.sidebar-closed]="isSidebarClosed">
-    <!-- Left Side -->
     <div class="header-left">
         <h1 class="logo">Dashboard</h1>
     </div>
 
-    <!-- Center: Search Bar -->
     <div class="header-center">
         <input type="text" class="search-bar" placeholder="🔍 Search...">
     </div>
 
-    <!-- Right Side: User Profile -->
     <div class="header-right">
         <div class="user-profile">
-            <i class="fas fa-user"></i> <!-- تم تغيير الأيقونة إلى user -->
+            <i class="fas fa-user"></i> 
             <span class="user-name">{{ user.name }}</span>
         </div>
     </div>

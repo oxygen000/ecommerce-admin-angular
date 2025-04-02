@@ -1,17 +1,14 @@
 <div class="container">
-    <!-- Main Content -->
     <main class="main-content">
         <div class="header">
             <h1 class="title">Dashboard</h1>
             <button class="settings-btn" (click)="toggleSettings()">Settings</button>
         </div>
 
-        <!-- Settings Modal -->
         <div class="settings-modal" *ngIf="isSettingsOpen" [class.open]="isSettingsOpen">
             <div class="settings-content">
                 <h2>Settings</h2>
 
-                <!-- Language Selection -->
                 <div class="setting-option">
                     <label>Language</label>
                     <select class="language-select" [(ngModel)]="selectedLanguage" (change)="changeLanguage(selectedLanguage)">
@@ -20,18 +17,15 @@
                     </select>
                 </div>
 
-                <!-- Account Settings -->
                 <div class="setting-option">
                     <label>Account</label>
                     <button class="account-btn">Manage Account</button>
                 </div>
 
-                <!-- Close Button -->
                 <button class="close-btn" (click)="toggleSettings()">Close</button>
             </div>
         </div>
 
-        <!-- Statistics Cards -->
         <div class="stats-grid">
             <div *ngFor="let stat of stats" class="stat-card">
                 <div class="icon">{{ stat.icon }}</div>
@@ -42,7 +36,6 @@
             </div>
         </div>
 
-        <!-- Sales Chart -->
         <div class="chart-container">
             <ngx-charts-bar-vertical
                 [results]="chartData"
@@ -58,7 +51,6 @@
             </ngx-charts-bar-vertical>
         </div>
 
-        <!-- Data Table -->
         <div class="table-container">
             <h2 class="section-title">Data Overview</h2>
             <table>
@@ -79,7 +71,6 @@
             </table>
         </div>
 
-        <!-- Export Data Button -->
         <div class="export-section">
             <button class="export-btn" (click)="downloadExcel()">Download Excel</button>
         </div>

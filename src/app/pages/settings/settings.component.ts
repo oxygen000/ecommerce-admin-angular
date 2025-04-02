@@ -3,10 +3,10 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
-  standalone: true,  // يجب إضافة `standalone: true` عند استخدام `imports`
+  standalone: true, 
   imports: [FormsModule],
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'] // لاحظ التعديل هنا ليكون `styleUrls`
+  styleUrls: ['./settings.component.scss'] 
 })
 export class SettingsComponent {
   settings = {

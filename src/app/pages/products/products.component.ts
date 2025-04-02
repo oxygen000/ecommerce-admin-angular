@@ -27,7 +27,6 @@ export class ProductsComponent implements OnInit {
   }
 
   loadProducts(): void {
-    // بيانات وهمية
     this.products = [
       { id: 1, name: 'T-Shirt', price: 20, category: 'Men', stock: 15 },
   { id: 2, name: 'Jeans', price: 40, category: 'Men', stock: 10 },

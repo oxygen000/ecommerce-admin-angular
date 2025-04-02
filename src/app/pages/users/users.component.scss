@@ -19,7 +19,7 @@
   transition: all 0.3s ease-in-out;
   margin-left: 90px;
   position: relative;
-  left: 40px; // إزاحة المحتوى بعد الـ sidebar
+  left: 40px; 
 
 }
 
@@ -128,7 +128,6 @@ tbody tr:hover {
   margin-top: 20px;
 }
 
-/* تحسين نافذة إضافة المستخدم */
 .modal {
   position: fixed;
   top: 0;
@@ -136,15 +135,14 @@ tbody tr:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  display: flex; /* جعلها مرنة من البداية */
+  display: flex; 
   justify-content: center;
   align-items: center;
-  opacity: 0; /* إخفاء النافذة في البداية */
+  opacity: 0; 
   visibility: hidden;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-/* عند تفعيل النافذة */
 .modal.active {
   opacity: 1;
   visibility: visible;
@@ -160,24 +158,21 @@ tbody tr:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transform: translateY(-20px);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  opacity: 0; /* يبدأ غير مرئي */
+  opacity: 0; 
 }
 
-/* عند تفعيل النافذة */
 .modal.active .modal-content {
   transform: translateY(0);
   opacity: 1;
 }
 
-/* تحسين تنسيق مربعات الإدخال */
 .modal form {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* تباعد بين الحقول */
+  gap: 15px; 
   align-items: center;
 }
 
-/* تنسيق العناوين */
 .modal form label {
   font-weight: bold;
   color: #333;
@@ -188,7 +183,6 @@ tbody tr:hover {
   width: 100%;
 }
 
-/* تنسيق مربعات الإدخال */
 .modal form input {
   width: 100%;
   padding: 12px;
@@ -199,13 +193,11 @@ tbody tr:hover {
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* تحسين التأثير عند التركيز */
 .modal form input:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
-/* تحسين أزرار الحفظ والإلغاء */
 .modal-buttons {
   display: flex;
   justify-content: space-between;

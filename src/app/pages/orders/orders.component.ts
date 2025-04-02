@@ -37,7 +37,7 @@ statusOptions = ['Pending', 'Processing', 'Completed', 'Canceled'];
   }
 
   selectOrder(order: any) {
-    this.selectedOrder = { ...order }; // عمل نسخة لتجنب التعديل المباشر
+    this.selectedOrder = { ...order }; 
   }
   updateOrder() {
     let index = this.orders.findIndex(o => o.id === this.selectedOrder.id);

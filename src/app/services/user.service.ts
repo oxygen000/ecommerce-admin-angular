@@ -12,6 +12,6 @@ export class UsersService {
   ];
 
   getUsers() {
-    return this.users; // Return mock data
+    return this.users; 
   }
 }

@@ -4,7 +4,7 @@
     left: 0;
     width: calc(100% - 40px);
     height: 60px;
-    background: linear-gradient(to right, #0f3460, #16213e); // تحسين التدرج اللوني
+    background: linear-gradient(to right, #0f3460, #16213e); 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,7 +20,6 @@
     }
 }
 
-/* تعديل الهيدر عند إغلاق الـ Sidebar */
 .header.sidebar-closed {
     width: calc(100% - 60px);
 
@@ -29,7 +28,6 @@
     }
 }
 
-/* الجانب الأيسر */
 .header-left {
     display: flex;
     align-items: center;
@@ -41,7 +39,6 @@
     white-space: nowrap;
 }
 
-/* وسط الهيدر: شريط البحث */
 .header-center {
     flex: 1;
     display: flex;
@@ -69,13 +66,11 @@
     }
 }
 
-/* الجانب الأيمن */
 .header-right {
     display: flex;
     align-items: center;
 }
 
-/* تصميم الملف الشخصي */
 .user-profile {
     display: flex;
     align-items: center;
@@ -103,7 +98,6 @@
 
 
 
-/* جعل التصميم متجاوبًا مع الهواتف */
 @media (max-width: 600px) {
     .header {
         flex-direction: column;

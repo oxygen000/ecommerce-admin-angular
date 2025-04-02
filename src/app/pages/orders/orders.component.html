@@ -1,11 +1,8 @@
 <div class="orders-container">
-  <!-- عنوان الصفحة -->
   <h2 class="title">Orders Management</h2>
 
-  <!-- مربع البحث عن الطلبات -->
   <input type="text" placeholder="Search orders..." [(ngModel)]="searchTerm" class="search-input" />
 
-  <!-- قائمة الطلبات -->
   <div class="orders-list">
     <div *ngFor="let order of filteredOrders()" class="order-card" (click)="selectOrder(order)">
       <div class="order-header">
@@ -19,7 +16,6 @@
     </div>
   </div>
 
-  <!-- نافذة التفاصيل عند الضغط على الطلب -->
   <div *ngIf="selectedOrder" class="modal">
     <div class="modal-content">
       <h2>Order Details</h2>
