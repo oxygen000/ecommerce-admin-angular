@@ -23,9 +23,9 @@ import * as XLSX from 'xlsx';
 })
 export class DashboardComponent {
   stats = [
-    { icon: '📊', title: 'Total Sales', value: '$50,000' },
-    { icon: '🛒', title: 'Orders', value: '1,200' },
-    { icon: '👥', title: 'Customers', value: '5,400' }
+    { icon: `<i class="fa fa-chart-bar"></i>`, title: 'Total Sales', value: '$50,000' },
+    { icon: `<i class="fa fa-shopping-cart"></i>`, title: 'Orders', value: '1,200' },
+    { icon: `<i class="fa fa-users"></i>`, title: 'Customers', value: '5,400' }
   ];
 
   chartData = [
