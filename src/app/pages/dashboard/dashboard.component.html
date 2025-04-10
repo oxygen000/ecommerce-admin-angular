@@ -28,7 +28,7 @@
 
         <div class="stats-grid">
             <div *ngFor="let stat of stats" class="stat-card">
-                <div class="icon">{{ stat.icon }}</div>
+                <div class="icon" [innerHTML]="stat.icon"></div>
                 <div class="stat-info">
                     <h2 class="stat-title">{{ stat.title }}</h2>
                     <p class="stat-value">{{ stat.value }}</p>
@@ -63,7 +63,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let stat of stats">
-                        <td>{{ stat.icon }}</td>
+                        <td [innerHTML]="stat.icon">{{ stat.icon }}</td>
                         <td>{{ stat.title }}</td>
                         <td>{{ stat.value }}</td>
                     </tr>
