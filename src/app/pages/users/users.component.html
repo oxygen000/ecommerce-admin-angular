@@ -16,8 +16,8 @@
             <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
             <input type="text" placeholder="Phone" [(ngModel)]="newUser.phone" name="phone" required>
             <div class="modal-buttons">
-                <button type="submit" class="save-btn">✅ Save</button>
-                <button type="button" class="cancel-btn" (click)="closeAddUserModal()">❌ Cancel</button>
+                <button type="submit" class="save-btn"><i class="fas fa-save"></i> Save</button>
+                <button type="button" class="cancel-btn" (click)="closeAddUserModal()"><i class="fas fa-times"></i> Cancel</button>
             </div>
         </form>
     </div>

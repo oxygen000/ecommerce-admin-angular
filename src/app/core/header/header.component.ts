@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -12,7 +12,33 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   @Input() isSidebarClosed: boolean = false;
+  @Input() isClosed: boolean = false;
+  @Output() toggleSidebarEvent = new EventEmitter<void>();
 
   user = {
-    name: 'Ahmed Hassan',};
+    name: 'Ahmed Hassan',
+  };
+
+  ngOnInit() {
+    this.handleSidebarByScreenSize();
+  }
+
+  handleSidebarByScreenSize() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1024 && this.isSidebarClosed) {
+      this.toggleSidebarEvent.emit();
+    } else if (screenWidth <= 767 && !this.isSidebarClosed) {
+      this.toggleSidebarEvent.emit();
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.handleSidebarByScreenSize();
+  }
+
+  toggleSidebar() {
+    this.toggleSidebarEvent.emit();
+  }
 }

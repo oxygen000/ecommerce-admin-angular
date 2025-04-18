@@ -1,15 +1,30 @@
 <header class="header" [class.sidebar-closed]="isSidebarClosed">
+    <div class="button-container block md:hidden  ">
+        <button class="button-toggle text-white font-bold text-2xl " (click)="toggleSidebar()">
+            <i class="fas" [class.fa-bars]="isSidebarClosed" [class.fa-times]="!isSidebarClosed"></i>
+        </button>
+    </div>
     <div class="header-left">
         <h1 class="logo">Dashboard</h1>
     </div>
 
-    <div class="header-center">
-        <input type="text" class="search-bar" placeholder="🔍 Search...">
+    <div class="w-full"
+    style=" 
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    padding-left: 0;
+    margin: 0 auto; 
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+    ">
+        <input type="text" class="search-bar border-2 border-gray-300 rounded-md" placeholder=" Search...">
     </div>
 
     <div class="header-right">
         <div class="user-profile">
-            <i class="fas fa-user"></i> 
+            <i class="fas fa-user"></i>
             <span class="user-name">{{ user.name }}</span>
         </div>
     </div>

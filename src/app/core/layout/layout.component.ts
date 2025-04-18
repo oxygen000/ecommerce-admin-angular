@@ -18,11 +18,15 @@ import { MatButtonModule } from '@angular/material/button';
   template: `
     <div class="layout">
       <aside class="sidebar">
-        <app-sidebar></app-sidebar>
+        <app-sidebar #sidebar></app-sidebar>
       </aside>
       <div class="main-content">
         <header class="header">
-          <app-header></app-header>
+          <app-header 
+            [isClosed]="sidebar.isClosed"
+            [isSidebarClosed]="sidebar.isClosed"
+            (toggleSidebarEvent)="sidebar.toggleSidebar()">
+          </app-header>
         </header>
 
         <main class="content">

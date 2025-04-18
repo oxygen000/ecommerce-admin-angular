@@ -2,7 +2,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: calc(100% - 40px);
+    width: calc(100% - 256px);
+    margin-left: 256px; 
     height: 60px;
     background: linear-gradient(to right, #0f3460, #16213e); 
     display: flex;
@@ -13,9 +14,12 @@
     z-index: 999;
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .header {
         width: 100%;
+        margin-left: 0; 
         padding: 0 15px;
     }
 }
@@ -54,10 +58,8 @@
     width: 100%;
     max-width: 350px;
     padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
     font-size: 14px;
+    display:flex;
     transition: all 0.3s ease-in-out;
 
     @media (max-width: 600px) {
@@ -100,27 +102,38 @@
 
 @media (max-width: 600px) {
     .header {
-        flex-direction: column;
+        flex-direction: row; 
         height: auto;
         padding: 10px;
+        flex-wrap: wrap; 
+        justify-content: space-between;
     }
 
     .header-left,
+    .header-center,
     .header-right {
-        width: 100%;
-        justify-content: center;
+        width: auto;
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
     }
 
     .header-center {
-        width: 100%;
-        margin-top: 10px;
+        flex: 1;
+        justify-content: center;
+        padding-left: 0;
+        margin: 0 auto; 
+        
     }
 
     .search-bar {
         width: 90%;
+        max-width: 300px;
+        font-size: 13px;
     }
 
     .user-profile {
         justify-content: center;
     }
 }
+
